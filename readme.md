@@ -2,6 +2,8 @@
 
 ![alt text](attentionMIL.png)
 
+![alt text](attentionMIL2.png)
+
 
 
 python daliFeaturizer.py tbl/tile_224_stats_sorted_part2.feather -encoder deit3_small_patch16_224 -weights chkpt/tileClassifier/deit3_small_patch16_224_sweepy-sweep-45/epoch\=83-step\=21270.ckpt  -out deit_sweepy_sweep -g 12 -colorize 1
