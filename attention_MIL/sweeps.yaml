@@ -1,0 +1,231 @@
+program: trainLightning.py
+method: bayes
+metric:
+  goal: maximize
+  name: score
+parameters:
+  reducedDim:
+    values: [4,8,16,32,64,128,256]
+    distribution: categorical
+  sampler:
+    values: [0, 4,8,16]
+    distribution: categorical
+  encoder:
+    values:
+      - tc_efficientnetb3_0.01
+      - tc_efficientnetb3_0.04
+    distribution: categorical
+  opt:
+    values:
+      - adam
+      - sgd
+    distribution: categorical
+  lr:
+    values: [0.1, 0.01, 0.001]
+    distribution: categorical
+  bs:
+    values: [4,8,16,32,64,128]
+    distribution: categorical
+
+
+
+
+program: trainLightning.py
+method: bayes
+metric:
+  goal: maximize
+  name: score
+parameters:
+  sampler:
+    max: 32
+    min: 1
+    distribution: int_uniform
+  gated:
+    values:
+      - True
+      - False
+    distribution: categorical
+  noise:
+    values:
+      - 0
+      - 0.01
+      - 0.001
+      - 0.0001
+      - 0.00001
+      - 0.0000001
+    distribution: categorical
+  reducedDim:
+    values: [8,16,32,64,128,256]
+    distribution: categorical
+  encoder:
+    values:
+      - efficientnet_b3_alltiles
+      - deit3_small_patch16_224
+    distribution: categorical
+  opt:
+    values:
+      - adam
+      - sgd
+    distribution: categorical
+  lr:
+    values: [0.1, 0.01, 0.001]
+    distribution: categorical
+  bs:
+    values: [16,64]
+    distribution: categorical
+
+
+
+
+
+
+program: trainLightning.py
+method: bayes
+metric:
+  goal: maximize
+  name: score
+parameters:
+  sampler:
+    values: [0,1,10]
+    distribution: categorical
+  noise:
+    values:
+      - 0
+      - 0.01
+      - 0.001
+      - 0.0001
+      - 0.00001
+      - 0.0000001
+    distribution: categorical
+  lossFun:
+    values:
+      - focal
+    distribution: categorical
+  focalAlpha:
+    values: [0.25,0.75, 0.95]
+    distribution: categorical
+  focalGamma:
+    values: [0.5,2.0,3.0]
+    distribution: categorical
+  focalReduction:
+    values:
+      - mean
+      - sum
+    distribution: categorical
+
+
+
+
+
+
+
+
+
+
+
+
+
+method: bayes
+metric:
+  goal: maximize
+  name: score
+parameters:
+  bs:
+    distribution: categorical
+    values:
+      - 16
+      - 32
+      - 64
+  dropout:
+    distribution: categorical
+    values:
+      - 0.25
+      - 0.5
+  encoder:
+    distribution: categorical
+    values:
+      - deit_sweepy_sweep
+  lr:
+    distribution: categorical
+    values:
+      - 0.01
+      - 0.001
+  noise:
+    distribution: categorical
+    values:
+      - 0
+      - 0.01
+      - 0.001
+  reducedDim:
+    distribution: categorical
+    values:
+      - 32
+      - 64
+      - 128
+      - 256
+  sampler:
+    distribution: int_uniform
+    max: 64
+    min: 8
+  directClassification:
+    values : [0,1]
+    distribution: categorical
+  batchNorm:
+    values : [0,1]
+    distribution: categorical
+program: trainLightning.py
+
+
+
+
+
+
+
+program: train.py
+method: bayes
+metric:
+  goal: maximize
+  name: val_acc
+parameters:
+  colorize:
+    distribution: categorical
+    values:
+      - 0
+      - 1
+      - 2
+      - 3
+  pool:
+    distribution: categorical
+    values:
+      - 0
+      - 1
+  poolFilt:
+    distribution: categorical
+    values:
+      - 8
+      - 16
+      - 32
+      - 64
+  kernel:
+    distribution: categorical
+    values:
+      - 3
+      - 5
+      - 7
+  encoder:
+    distribution: categorical
+    values:
+      - efficientnet_b1
+      - efficientnet_b3
+      - resnet50
+  lr:
+    distribution: categorical
+    values:
+      - 0.01
+      - 0.001
+      - 0.0001
+  sigma:
+    distribution: categorical
+    values:
+      - 2
+      - 3
